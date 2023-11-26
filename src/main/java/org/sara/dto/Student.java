@@ -1,5 +1,6 @@
 package org.sara.dto;
 
+
 public class Student {
     private String lname;
     private String fname;
@@ -7,5 +8,12 @@ public class Student {
     private String id;
     private int courseNum;
     private Department department;
-    private int nextId;
+    private static int nextId = 1;
+
+    public Student(String lname, String fname, Department department) {
+        this.lname = lname;
+        this.fname = fname;
+        this.department = department;
+        this.id = "S" + nextId++;
+    }
 }
