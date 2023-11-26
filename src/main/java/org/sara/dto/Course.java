@@ -8,4 +8,13 @@ public class Course {
     private int studentNum;
     private Teacher teacher;
     private String courseName;
+    private static int nextId = 1;
+    private static final int MAX_STUDENT_NUM = 5;
+
+    public Course(double credit, Department department, String courseName) {
+        this.credit = credit;
+        this.department = department;
+        this.courseName = courseName;
+        this.id = "C" + nextId++;
+    }
 }
