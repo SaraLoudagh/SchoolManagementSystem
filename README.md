@@ -5,10 +5,17 @@ A school management system that can store departments, students, teachers and co
 
 The SchoolManagementSystem class lists all the necessary methods to manage the school
 findDepartment(),
+
 `findStudent(String studentId)`, `findCourse(String courseId)` and `findTeacher(String teacherId)` are used to find an element based on its id
+
 `printTeachers()`, `printCourses()`, `printStudents()` and `printDepartments()` are used to print a list of these elements
+
 `modifyCourseTeacher(String courseId, String teacherId)` is used to modidfy a course and the teacher
-`addDepartment(String name)`, `addCourse(String courseName, double credit, String departmentId)`, `addTeacher(String lname, String fname, String departmentId)` and `addStudent(String fname, String lname, String departmentId)` are used to create new elements
+
+`addDepartment(String name)`, `addCourse(String courseName, double credit, String departmentId)`, `addTeacher(String lname, String fname, String departmentId)` and 
+
+`addStudent(String fname, String lname, String departmentId)` are used to create new elements
+
 `registerCourse(String courseId, String studentId)` is used to register a student to a course
 
 The Student class is used to create new students
