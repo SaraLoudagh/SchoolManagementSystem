@@ -1,5 +1,8 @@
 package org.sara.dto;
 
+import lombok.ToString;
+
+@ToString
 public class Course {
     private double credit;
     private String id;
@@ -15,6 +18,6 @@ public class Course {
         this.credit = credit;
         this.department = department;
         this.courseName = courseName;
-        this.id = "C" + nextId++;
+        this.id = String.format("C%03d", nextId++);
     }
 }

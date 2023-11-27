@@ -1,5 +1,8 @@
 package org.sara.dto;
 
+import lombok.ToString;
+
+@ToString
 public class Teacher {
     private String lname;
     private String fname;
@@ -11,6 +14,6 @@ public class Teacher {
         this.lname = lname;
         this.fname = fname;
         this.department = department;
-        this.id = "T" + nextId++;
+        this.id = String.format("T%03d", nextId++);
     }
 }
