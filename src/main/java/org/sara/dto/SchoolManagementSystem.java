@@ -46,14 +46,22 @@ public class SchoolManagementSystem {
      * Prints the list of teachers that are not null
      */
     public void printTeachers() {
-
+        for (Teacher teacher : teachers) {
+            if (teacher != null) {
+                System.out.println(teacher);
+            }
+        }
     }
 
     /**
      * Print the list of all courses in the school
      */
     public void printCourses() {
-
+        for (Course course : courses) {
+            if (course != null) {
+                System.out.println(course);
+            }
+        }
     }
 
     /**
@@ -90,7 +98,7 @@ public class SchoolManagementSystem {
      * Find a student based on their student id
      * @param studentId the id of the student
      * @return the student's info
-     */
+//     */
     public Student findStudent(String studentId) {
 
     }
@@ -148,7 +156,11 @@ public class SchoolManagementSystem {
      * print the list of departments
      */
     public void printDepartments() {
-
+        for (Department department : departments) {
+            if (department != null) {
+                System.out.println(department);
+            }
+        }
     }
 
     /**

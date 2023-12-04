@@ -14,6 +14,10 @@ public class Main {
         school.addTeacher("haha", "hihi", "D001");
         school.addCourse("haha", 5, "D001");
         System.out.println(school);
+        school.printDepartments();
+        school.printCourses();
+        school.printTeachers();
+        school.printStudents();
 
 
     }
