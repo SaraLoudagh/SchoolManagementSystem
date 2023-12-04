@@ -1,9 +1,29 @@
 package org.sara.dto;
 
+import lombok.ToString;
+
+@ToString
 public class SchoolManagementSystem {
+    private String name;
+    private Department[] departments;
+    private Student[] students;
+    private Teacher[] teachers;
+    private Course[] courses;
+    private static final int MAX_DEPARTMENTS_NUM = 5;
+    private static final int MAX_TEACHERS_NUM = 20;
+    private static final int MAX_STUDENTS_NUM = 200;
+    private static final int MAX_COURSES_NUM = 30;
+    private int departmentNum = 0;
+    private int studentNum = 0;
+    private int teacherNum = 0;
+    private int courseNum = 0;
 
-    public SchoolManagementSystem(String string) {
-
+    public SchoolManagementSystem(String name) {
+        this.name = name;
+        this.departments = new Department[MAX_DEPARTMENTS_NUM];
+        this.students = new Student[MAX_STUDENTS_NUM];
+        this.teachers = new Teacher[MAX_TEACHERS_NUM];
+        this.courses = new Course[MAX_TEACHERS_NUM];
     }
 
     /**
@@ -12,7 +32,14 @@ public class SchoolManagementSystem {
      * @return the department's info
      */
     public Department findDepartment(String departmentId) {
-
+        Department d1 = null;
+        for (Department department : departments) {
+            if (department.getId().equals(departmentId)) {
+                d1 = department;
+                break;
+            }
+        }
+        return d1;
     }
 
     /**
@@ -40,10 +67,16 @@ public class SchoolManagementSystem {
 
     /**
      * Create a new department
-     * @param name of the department
+     * @param departmentName of the department
      */
-    public void addDepartment(String name) {
-
+    public void addDepartment(String departmentName) {
+        if (departmentNum < MAX_DEPARTMENTS_NUM) {
+            departments[departmentNum] = new Department(departmentName);
+            departmentNum++;
+        }
+        else {
+            System.out.println("add department failed");
+        }
     }
 
     /**
@@ -69,7 +102,12 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the department where the course is taught
      */
     public void addCourse(String courseName, double credit, String departmentId) {
-
+        if (courseNum < MAX_COURSES_NUM) {
+            courses[courseNum] = new Course(credit, findDepartment(departmentId), courseName);
+        }
+        else {
+            System.out.println("Max course amount reached, add course failed");
+        }
     }
 
     /**
@@ -83,12 +121,18 @@ public class SchoolManagementSystem {
 
     /**
      * Create a new teacher
-     * @param lname the teacher's last name
-     * @param fname the teacher's first name
+     * @param fname the teacher's last name
+     * @param lname the teacher's first name
      * @param departmentId the id of the teacher's department
      */
-    public void addTeacher(String lname, String fname, String departmentId) {
-
+    public void addTeacher(String fname, String lname, String departmentId) {
+        if (teacherNum < MAX_TEACHERS_NUM) {
+            teachers[teacherNum] = new Teacher(fname, lname, findDepartment(departmentId));
+            teacherNum++;
+        }
+        else {
+            System.out.println("Max teacher reached. Add teacher failed.");
+        }
     }
 
     /**
@@ -114,7 +158,13 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the student's department
      */
     public void addStudent(String fname, String lname, String departmentId) {
-
+        if (studentNum < MAX_STUDENTS_NUM) {
+            students[studentNum] = new Student(lname, fname, findDepartment(departmentId));
+            studentNum++;
+        }
+        else {
+            System.out.println("max student number reached, add student failed");
+        }
     }
 
     /**

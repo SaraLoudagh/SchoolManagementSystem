@@ -12,6 +12,7 @@ public class Student {
     private Department department;
     private static int nextId = 1;
     private static final int MAX_COURSES_NUM = 5;
+    private static final int MAX_STUDENTS_NUM = 200;
 
     public Student(String lname, String fname, Department department) {
         this.lname = lname;
