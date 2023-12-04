@@ -91,6 +91,11 @@ public class SchoolManagementSystem {
      * print the list of the students in the school
      */
     public void printStudents() {
+        for (Student student : students) {
+            if (student != null) {
+                System.out.println(student);
+            }
+        }
     }
 
     /**
@@ -99,11 +104,7 @@ public class SchoolManagementSystem {
      * @return the student's info
 //     */
     public Student findStudent(String studentId) {
-        for (Student student : students) {
-            if (student != null) {
-                System.out.println(student);
-            }
-        }
+
     }
 
     /**
