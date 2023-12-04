@@ -104,7 +104,14 @@ public class SchoolManagementSystem {
      * @return the student's info
 //     */
     public Student findStudent(String studentId) {
-
+        Student s1 = null;
+        for (Student student : students) {
+            if (student.getId().equals(studentId)) {
+                s1 = student;
+                break;
+            }
+        }
+        return s1;
     }
 
     /**
@@ -153,7 +160,14 @@ public class SchoolManagementSystem {
      * @return the info on the course
      */
     public Course findCourse(String courseId) {
-
+        Course c1 = null;
+        for (Course course : courses) {
+            if (course.getId().equals(courseId)) {
+                c1 = course;
+                break;
+            }
+        }
+        return c1;
     }
 
     /**
@@ -189,6 +203,13 @@ public class SchoolManagementSystem {
      * @return
      */
     public Teacher findTeacher(String teacherId) {
-
+        Teacher t1 = null;
+        for (Teacher teacher : teachers) {
+            if (teacher.getId().equals(teacherId)) {
+                t1 = teacher;
+                break;
+            }
+        }
+        return t1;
     }
 }
