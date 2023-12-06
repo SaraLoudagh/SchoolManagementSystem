@@ -1,10 +1,12 @@
 package org.sara.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @ToString
+@Setter
 public class Student {
     private String lname;
     private String fname;
@@ -21,5 +23,6 @@ public class Student {
         this.fname = fname;
         this.department = department;
         this.id = String.format("S%03d", nextId++);
+        this.courses = new Course[MAX_COURSES_NUM];
     }
 }

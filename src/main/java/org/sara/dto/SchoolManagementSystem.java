@@ -70,7 +70,7 @@ public class SchoolManagementSystem {
      * @param teacherId the id of the new teacher
      */
     public void modifyCourseTeacher(String courseId, String teacherId) {
-
+        findCourse(courseId).setTeacher(findTeacher(teacherId));
     }
 
     /**
@@ -88,7 +88,7 @@ public class SchoolManagementSystem {
     }
 
     /**
-     * print the list of the students in the school
+     * Print the list of the students in the school
      */
     public void printStudents() {
         for (Student student : students) {
@@ -135,7 +135,7 @@ public class SchoolManagementSystem {
      * @param studentId the student's id
      */
     public void registerCourse(String courseId, String studentId) {
-
+        findStudent(studentId).setCourses(new Course[]{courses[findStudent(studentId).getCourseNum()] = findCourse(courseId)});
     }
 
     /**
