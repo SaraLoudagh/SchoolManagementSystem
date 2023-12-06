@@ -46,6 +46,7 @@ public class SchoolManagementSystem {
      * Prints the list of teachers that are not null
      */
     public void printTeachers() {
+        System.out.println("Displaying all teachers:\n-------------------");
         for (Teacher teacher : teachers) {
             if (teacher != null) {
                 System.out.println(teacher);
@@ -57,6 +58,7 @@ public class SchoolManagementSystem {
      * Print the list of all courses in the school
      */
     public void printCourses() {
+        System.out.println("Displaying all courses:\n-------------------");
         for (Course course : courses) {
             if (course != null) {
                 System.out.println(course);
@@ -80,10 +82,10 @@ public class SchoolManagementSystem {
     public void addDepartment(String departmentName) {
         if (departmentNum < MAX_DEPARTMENTS_NUM) {
             departments[departmentNum] = new Department(departmentName);
-            departmentNum++;
+            System.out.printf("Add department %s successfully.\n", departments[departmentNum++]);
         }
         else {
-            System.out.println("add department failed");
+            System.out.println("Max department reached, add department failed");
         }
     }
 
@@ -91,6 +93,7 @@ public class SchoolManagementSystem {
      * Print the list of the students in the school
      */
     public void printStudents() {
+        System.out.println("Displaying all students:\n-------------------");
         for (Student student : students) {
             if (student != null) {
                 System.out.println(student);
@@ -123,6 +126,7 @@ public class SchoolManagementSystem {
     public void addCourse(String courseName, double credit, String departmentId) {
         if (courseNum < MAX_COURSES_NUM) {
             courses[courseNum] = new Course(credit, findDepartment(departmentId), courseName);
+            System.out.printf("Add course %s successfully.\n", courses[courseNum++]);
         }
         else {
             System.out.println("Max course amount reached, add course failed");
@@ -147,10 +151,10 @@ public class SchoolManagementSystem {
     public void addTeacher(String fname, String lname, String departmentId) {
         if (teacherNum < MAX_TEACHERS_NUM) {
             teachers[teacherNum] = new Teacher(fname, lname, findDepartment(departmentId));
-            teacherNum++;
+            System.out.printf("Add teacher %s successfully.\n", teachers[teacherNum++]);
         }
         else {
-            System.out.println("Max teacher reached. Add teacher failed.");
+            System.out.println("Max teacher reached. Add a new teacher failed.");
         }
     }
 
@@ -174,6 +178,7 @@ public class SchoolManagementSystem {
      * print the list of departments
      */
     public void printDepartments() {
+        System.out.println("Displaying all the departments:\n-------------------");
         for (Department department : departments) {
             if (department != null) {
                 System.out.println(department);
@@ -190,17 +195,17 @@ public class SchoolManagementSystem {
     public void addStudent(String fname, String lname, String departmentId) {
         if (studentNum < MAX_STUDENTS_NUM) {
             students[studentNum] = new Student(lname, fname, findDepartment(departmentId));
-            studentNum++;
+            System.out.printf("Add student %s successfully.\n", students[studentNum++]);
         }
         else {
-            System.out.println("max student number reached, add student failed");
+            System.out.println("Max student number reached, add a new student failed");
         }
     }
 
     /**
      * Find a teacher based on their id
      * @param teacherId the id of the teacher
-     * @return
+     * @return the teacher
      */
     public Teacher findTeacher(String teacherId) {
         Teacher t1 = null;
