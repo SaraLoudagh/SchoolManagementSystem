@@ -139,7 +139,33 @@ public class SchoolManagementSystem {
      * @param studentId the student's id
      */
     public void registerCourse(String courseId, String studentId) {
-        findStudent(studentId).setCourses(new Course[]{courses[findStudent(studentId).getCourseNum()] = findCourse(courseId)});
+        for (int i = 0; i < findStudent(studentId).getCourseNum(); i++) {
+            if (findStudent(studentId).getCourses()[i] == findCourse(courseId)) {
+                System.out.printf("Student %s has already registered Course %s," +
+                        " register course %s for student %s failed.\n", studentId, courseId, courseId, studentId);
+                break;
+            }
+        }
+        if (findStudent(studentId) == null) {
+            System.out.printf("Cannot find any student match with student id %s," +
+                    " register course for student %s failed.", studentId, studentId);
+        } else if (findCourse(courseId) == null) {
+            System.out.printf("Cannot find any student match with course id %s," +
+                    " register course for student %s failed.", courseId, studentId);
+        } else if (findStudent(studentId).getCourseNum() == 5) {
+            System.out.printf("Student %s has already registered 5 courses," +
+                    " register course for student %s failed. ", studentId, studentId);
+
+        } else if (findCourse(courseId).getStudentNum() == 20) {
+            System.out.printf("Course %s has been fully registered," +
+                    " register course %s for student S001 failed", courseId, courseId);
+
+        } else {
+            findStudent(studentId).setCourses(new Course[]{courses[findStudent(studentId).getCourseNum()] = findCourse(courseId)});
+            System.out.println("Student course registered successfully.");
+            System.out.printf("Latest student info: %s\n", findStudent(studentId));
+            System.out.printf("Latest course info: %s\n", findCourse(courseId));
+        }
     }
 
     /**
