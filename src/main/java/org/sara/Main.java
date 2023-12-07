@@ -21,6 +21,7 @@ public class Main {
         school.printStudents();
         school.registerCourse("C001", "S001");
         school.registerCourse("C001", "S001");
+        school.printStudents();
         System.out.println(school.findStudent("S001"));
         school.modifyCourseTeacher("C001", "T002");
         System.out.println(school.findCourse("C001"));
