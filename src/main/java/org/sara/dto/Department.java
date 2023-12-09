@@ -1,10 +1,8 @@
 package org.sara.dto;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class Department {
     private String id;
     private String departmentName;
