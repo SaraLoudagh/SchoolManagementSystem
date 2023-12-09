@@ -14,12 +14,10 @@ public class Main {
         vanier.addTeacher("Ryan", "Gosling", "D001");
         vanier.addTeacher("Bella", "Blake", "D001");
         vanier.addCourse("Intro to programming", 3, "D001");
-        System.out.println(vanier.findCourse("C001"));
         vanier.registerCourse("C001", "S001");
         vanier.registerCourse("C001", "S001");
         vanier.printStudents();
-        vanier.modifyCourseTeacher("C001", "T002");
-        System.out.println(vanier.findCourse("C001"));
-
+        vanier.modifyCourseTeacher("C004", "T021");
+        vanier.printTeachers();
     }
 }

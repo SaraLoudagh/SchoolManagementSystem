@@ -2,13 +2,9 @@ package org.sara.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Arrays;
 
 @Getter
 @Setter
-@ToString
 public class Course {
     private double credit;
     private String id;
@@ -30,25 +26,29 @@ public class Course {
 
     /**
      * Method to help registerCourse from SchoolManagementSystem class set a student to a course
-     * @param student
+     * @param student the student to give to the course
      */
     public void setNewStudent(Student student) {
-        this.students[studentNum] = student;
-        this.studentNum++;
+        students[studentNum] = student;
+        studentNum++;
     }
 
     @Override
     public String toString() {
+        String teacherName = null;
+        if (teacher != null) {
+            teacherName = teacher.getFname() + " " + teacher.getLname();
+        }
         String strOut = String.format("Course{id='%s', courseName='%s', credit=%.1f, teacher=%s," +
-                " department='%s', students=", this.id, this.courseName, this.credit, this.teacher,
-                this.department.getDepartmentName());
+                " department='%s', students=", id, courseName, credit, teacherName,
+                department.getDepartmentName());
         String studentList = "[";
         for (Student student : students) {
             if (student != null) {
-                studentList += student.getFname() + " " + student.getLname() + ", ";
+                studentList += String.format("%s %s, ", student.getFname(), student.getLname());
             }
         }
         studentList += "]";
-        return strOut + studentList;
+        return strOut + studentList + "}";
     }
 }

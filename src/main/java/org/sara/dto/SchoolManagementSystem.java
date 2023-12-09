@@ -1,8 +1,6 @@
 package org.sara.dto;
 
-import lombok.ToString;
 
-@ToString
 public class SchoolManagementSystem {
     private String name;
     private Department[] departments;
@@ -23,7 +21,7 @@ public class SchoolManagementSystem {
         this.departments = new Department[MAX_DEPARTMENTS_NUM];
         this.students = new Student[MAX_STUDENTS_NUM];
         this.teachers = new Teacher[MAX_TEACHERS_NUM];
-        this.courses = new Course[MAX_TEACHERS_NUM];
+        this.courses = new Course[MAX_COURSES_NUM];
     }
 
     /**
@@ -32,14 +30,12 @@ public class SchoolManagementSystem {
      * @return the department's info
      */
     public Department findDepartment(String departmentId) {
-        Department d1 = null;
         for (Department department : departments) {
-            if (department.getId().equals(departmentId)) {
-                d1 = department;
-                break;
+            if (department != null && department.getId().equals(departmentId)) {
+                return department;
             }
         }
-        return d1;
+        return null;
     }
 
     /**
@@ -72,7 +68,18 @@ public class SchoolManagementSystem {
      * @param teacherId the id of the new teacher
      */
     public void modifyCourseTeacher(String courseId, String teacherId) {
-        findCourse(courseId).setTeacher(findTeacher(teacherId));
+        if (findCourse(courseId) == null) {
+            System.out.printf("Cannot find any course match with courseId %s, modify teacher for course %s failed.\n",
+                    courseId, courseId);
+        }
+        else if (findTeacher(teacherId) == null) {
+            System.out.printf("Cannot find any teacher match with teacherId %s, modify teacher for course %s failed\n",
+                    teacherId, courseId);
+        }
+        else {
+            findCourse(courseId).setTeacher(findTeacher(teacherId));
+            System.out.printf("%s teacher info updated successfully\n", findCourse(courseId));
+        }
     }
 
     /**
@@ -108,7 +115,7 @@ public class SchoolManagementSystem {
 //     */
     public Student findStudent(String studentId) {
         for (Student student : students) {
-            if (student.getId().equals(studentId)) {
+            if (student != null && student.getId().equals(studentId)) {
                 return student;
             }
         }
@@ -193,14 +200,12 @@ public class SchoolManagementSystem {
      * @return the info on the course
      */
     public Course findCourse(String courseId) {
-        Course c1 = null;
         for (Course course : courses) {
-            if (course.getId().equals(courseId)) {
-                c1 = course;
-                break;
+            if (course!= null && course.getId().equals(courseId)) {
+                return course;
             }
         }
-        return c1;
+        return null;
     }
 
     /**
@@ -237,13 +242,11 @@ public class SchoolManagementSystem {
      * @return the teacher
      */
     public Teacher findTeacher(String teacherId) {
-        Teacher t1 = null;
         for (Teacher teacher : teachers) {
-            if (teacher.getId().equals(teacherId)) {
-                t1 = teacher;
-                break;
+            if (teacher != null && teacher.getId().equals(teacherId)) {
+                return teacher;
             }
         }
-        return t1;
+        return null;
     }
 }

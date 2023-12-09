@@ -1,10 +1,8 @@
 package org.sara.dto;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class Teacher {
     private String lname;
     private String fname;
@@ -22,6 +20,6 @@ public class Teacher {
     @Override
     public String toString() {
         return String.format("Teacher{id='%s', fname='%s', lname='%s', department='%s'}",
-                id, fname, this.lname, this.department.getDepartmentName());
+                id, fname, lname, department.getDepartmentName());
     }
 }
