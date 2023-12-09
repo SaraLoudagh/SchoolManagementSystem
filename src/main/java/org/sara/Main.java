@@ -14,15 +14,10 @@ public class Main {
         school.addTeacher("Ryan", "Gosling", "D001");
         school.addTeacher("Bella", "Blake", "D001");
         school.addCourse("Intro to programming", 3, "D001");
-        System.out.println(school);
-        school.printDepartments();
-        school.printCourses();
-        school.printTeachers();
-        school.printStudents();
+        System.out.println(school.findCourse("C001"));
         school.registerCourse("C001", "S001");
         school.registerCourse("C001", "S001");
         school.printStudents();
-        System.out.println(school.findStudent("S001"));
         school.modifyCourseTeacher("C001", "T002");
         System.out.println(school.findCourse("C001"));
 

@@ -4,8 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Arrays;
+
 @Getter
-@ToString
 @Setter
 public class Student {
     private String lname;
@@ -24,5 +25,23 @@ public class Student {
         this.department = department;
         this.id = String.format("S%03d", nextId++);
         this.courses = new Course[MAX_COURSES_NUM];
+    }
+    public void setNewCourse(Course course) {
+        this.courses[courseNum] = course;
+        this.courseNum++;
+    }
+
+    @Override
+    public String toString() {
+        String strOut = String.format("Student{id='%s', fname='%s', lname='%s', %s " +
+                "courseNum=%d, ", this.id, this.fname, this.lname, this.department,
+                this.courseNum);
+        String courseList = "[";
+        for (Course course : courses) {
+            if (course != null) {
+                courseList += course + ", ";
+            }
+        }
+        return strOut + courseList;
     }
 }

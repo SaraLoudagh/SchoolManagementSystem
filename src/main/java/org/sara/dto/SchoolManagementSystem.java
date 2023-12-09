@@ -107,14 +107,12 @@ public class SchoolManagementSystem {
      * @return the student's info
 //     */
     public Student findStudent(String studentId) {
-        Student s1 = null;
         for (Student student : students) {
             if (student.getId().equals(studentId)) {
-                s1 = student;
-                break;
+                return student;
             }
         }
-        return s1;
+        return null;
     }
 
     /**
@@ -148,7 +146,7 @@ public class SchoolManagementSystem {
                 break;
             }
         }
-        if (isAlreadyRegistered == false) {
+        if (!isAlreadyRegistered) {
             if (findStudent(studentId) == null) {
                 System.out.printf("Cannot find any student match with student id %s," +
                         " register course for student %s failed.", studentId, studentId);
@@ -164,9 +162,8 @@ public class SchoolManagementSystem {
                         " register course %s for student S001 failed", courseId, courseId);
 
             } else {
-                findStudent(studentId).setCourses(new Course[]{courses[findStudent(studentId).getCourseNum()]
-                        = findCourse(courseId)});
-                findStudent(studentId).setCourseNum(courseNum++);
+                findStudent(studentId).setNewCourse(findCourse(courseId));
+                findCourse(courseId).setNewStudent(findStudent(studentId));
                 System.out.println("Student course registered successfully.");
                 System.out.printf("Latest student info: %s\n", findStudent(studentId));
                 System.out.printf("Latest course info: %s\n", findCourse(courseId));

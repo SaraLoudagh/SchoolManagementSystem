@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Arrays;
+
 @Getter
 @Setter
 @ToString
@@ -23,5 +25,16 @@ public class Course {
         this.department = department;
         this.courseName = courseName;
         this.id = String.format("C%03d", nextId++);
+        this.students = new Student[MAX_STUDENT_NUM];
+    }
+    public void setNewStudent(Student student) {
+        System.out.println(1);
+        this.students[studentNum] = student;
+        this.studentNum++;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 }
