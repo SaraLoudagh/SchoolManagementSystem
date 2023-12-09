@@ -28,13 +28,21 @@ public class Course {
         this.students = new Student[MAX_STUDENT_NUM];
     }
     public void setNewStudent(Student student) {
-        System.out.println(1);
         this.students[studentNum] = student;
         this.studentNum++;
     }
 
     @Override
     public String toString() {
-        return "";
+        String strOut = String.format("Course{id='%s', courseName='%s', credit=%f, teacher=%s," +
+                " department='%s', students=", this.id, this.courseName, this.credit, this.teacher,
+                this.department);
+        String studentList = "[";
+        for (Student student : students) {
+            if (student != null) {
+                studentList += student + ", ";
+            }
+        }
+        return strOut + studentList;
     }
 }
