@@ -18,4 +18,10 @@ public class Teacher {
         this.department = department;
         this.id = String.format("T%03d", nextId++);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Teacher{id='%s', fname='%s', lname='%s', department='%s'}",
+                id, fname, this.lname, this.department.getDepartmentName());
+    }
 }

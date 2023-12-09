@@ -26,6 +26,11 @@ public class Student {
         this.id = String.format("S%03d", nextId++);
         this.courses = new Course[MAX_COURSES_NUM];
     }
+
+    /**
+     * Method to help registerCourse from SchoolManagementSystem class set a course to a student
+     * @param course
+     */
     public void setNewCourse(Course course) {
         this.courses[courseNum] = course;
         this.courseNum++;
@@ -36,12 +41,12 @@ public class Student {
         String strOut = String.format("Student{id='%s', fname='%s', lname='%s', %s " +
                 "courseNum=%d, ", this.id, this.fname, this.lname, this.department,
                 this.courseNum);
-        String courseList = "[";
+        String courseList = "courses=[";
         for (Course course : courses) {
             if (course != null) {
-                courseList += course + ", ";
+                courseList += course.getCourseName() + ", ";
             }
         }
-        return strOut + courseList;
+        return strOut + courseList + "]}";
     }
 }

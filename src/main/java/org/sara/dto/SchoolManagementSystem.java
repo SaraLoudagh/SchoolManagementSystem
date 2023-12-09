@@ -82,7 +82,7 @@ public class SchoolManagementSystem {
     public void addDepartment(String departmentName) {
         if (departmentNum < MAX_DEPARTMENTS_NUM) {
             departments[departmentNum] = new Department(departmentName);
-            System.out.printf("Add department %s successfully.\n", departments[departmentNum++]);
+            System.out.printf("%s added successfully.\n", departments[departmentNum++]);
         }
         else {
             System.out.println("Max department reached, add department failed");
@@ -124,7 +124,7 @@ public class SchoolManagementSystem {
     public void addCourse(String courseName, double credit, String departmentId) {
         if (courseNum < MAX_COURSES_NUM) {
             courses[courseNum] = new Course(credit, findDepartment(departmentId), courseName);
-            System.out.printf("Add course %s successfully.\n", courses[courseNum++]);
+            System.out.printf("%s added successfully.\n", courses[courseNum++]);
         }
         else {
             System.out.println("Max course amount reached, add course failed");
@@ -179,8 +179,8 @@ public class SchoolManagementSystem {
      */
     public void addTeacher(String fname, String lname, String departmentId) {
         if (teacherNum < MAX_TEACHERS_NUM) {
-            teachers[teacherNum] = new Teacher(fname, lname, findDepartment(departmentId));
-            System.out.printf("Add teacher %s successfully.\n", teachers[teacherNum++]);
+            teachers[teacherNum] = new Teacher(lname, fname, findDepartment(departmentId));
+            System.out.printf("%s added successfully.\n", teachers[teacherNum++]);
         }
         else {
             System.out.println("Max teacher reached. Add a new teacher failed.");
@@ -224,7 +224,7 @@ public class SchoolManagementSystem {
     public void addStudent(String fname, String lname, String departmentId) {
         if (studentNum < MAX_STUDENTS_NUM) {
             students[studentNum] = new Student(lname, fname, findDepartment(departmentId));
-            System.out.printf("Add student %s successfully.\n", students[studentNum++]);
+            System.out.printf("%s added successfully.\n", students[studentNum++]);
         }
         else {
             System.out.println("Max student number reached, add a new student failed");
