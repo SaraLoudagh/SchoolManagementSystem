@@ -1,6 +1,9 @@
 package org.sara.dto;
 
-
+/**
+ * Class to make a school system and where most methods are located
+ * @author Sara Loudagh
+ */
 public class SchoolManagementSystem {
     private String name;
     private Department[] departments;
@@ -76,8 +79,12 @@ public class SchoolManagementSystem {
             System.out.printf("Cannot find any teacher match with teacherId %s, modify teacher for course %s failed\n",
                     teacherId, courseId);
         }
+        else if (findTeacher(teacherId).equals(findCourse(courseId).getTeacher())) {
+            System.out.println("Teacher is already teaching this course");
+        }
         else {
             findCourse(courseId).setTeacher(findTeacher(teacherId));
+            findTeacher(teacherId).setCourse(findCourse(courseId));
             System.out.printf("%s teacher info updated successfully\n", findCourse(courseId));
         }
     }
@@ -129,9 +136,12 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the department where the course is taught
      */
     public void addCourse(String courseName, double credit, String departmentId) {
-        if (courseNum < MAX_COURSES_NUM) {
+        if (findDepartment(departmentId) != null && courseNum < MAX_COURSES_NUM) {
             courses[courseNum] = new Course(credit, findDepartment(departmentId), courseName);
             System.out.printf("%s added successfully.\n", courses[courseNum++]);
+        }
+        else if (findDepartment(departmentId) == null){
+            System.out.printf("Department with id %s not found, add course failed\n", departmentId);
         }
         else {
             System.out.println("Max course amount reached, add course failed");
@@ -145,30 +155,30 @@ public class SchoolManagementSystem {
      */
     public void registerCourse(String courseId, String studentId) {
         boolean isAlreadyRegistered = false;
-        for (int i = 0; i < findStudent(studentId).getCourseNum(); i++) {
-            if (findStudent(studentId).getCourses()[i].equals(findCourse(courseId))) {
-                System.out.printf("Student %s has already registered Course %s," +
-                        " register course %s for student %s failed.\n", studentId, courseId, courseId, studentId);
-                isAlreadyRegistered = true;
-                break;
+        if (findStudent(studentId) == null) {
+            System.out.printf("Cannot find any student match with student id %s," +
+                    " register course for student %s failed.\n", studentId, studentId);
+        } else if (findCourse(courseId) == null) {
+            System.out.printf("Cannot find any student match with course id %s," +
+                    " register course for student %s failed.\n", courseId, studentId);
+        } else if (findStudent(studentId).getCourseNum() == 5) {
+            System.out.printf("Student %s has already registered 5 courses," +
+                    " register course for student %s failed.\n", studentId, studentId);
+
+        } else if (findCourse(courseId).getStudentNum() == 5) {
+            System.out.printf("Course %s has been fully registered," +
+                    " register course %s for student S001 failed\n", courseId, courseId);
+
+        } else {
+            for (int i = 0; i < findStudent(studentId).getCourseNum(); i++) {
+                if (findStudent(studentId).getCourses()[i].equals(findCourse(courseId))) {
+                    System.out.printf("Student %s has already registered Course %s," +
+                            " register course %s for student %s failed.\n", studentId, courseId, courseId, studentId);
+                    isAlreadyRegistered = true;
+                    break;
+                }
             }
-        }
-        if (!isAlreadyRegistered) {
-            if (findStudent(studentId) == null) {
-                System.out.printf("Cannot find any student match with student id %s," +
-                        " register course for student %s failed.", studentId, studentId);
-            } else if (findCourse(courseId) == null) {
-                System.out.printf("Cannot find any student match with course id %s," +
-                        " register course for student %s failed.", courseId, studentId);
-            } else if (findStudent(studentId).getCourseNum() == 5) {
-                System.out.printf("Student %s has already registered 5 courses," +
-                        " register course for student %s failed. ", studentId, studentId);
-
-            } else if (findCourse(courseId).getStudentNum() == 20) {
-                System.out.printf("Course %s has been fully registered," +
-                        " register course %s for student S001 failed", courseId, courseId);
-
-            } else {
+            if (!isAlreadyRegistered) {
                 findStudent(studentId).setNewCourse(findCourse(courseId));
                 findCourse(courseId).setNewStudent(findStudent(studentId));
                 System.out.println("Student course registered successfully.");
@@ -227,9 +237,12 @@ public class SchoolManagementSystem {
      * @param departmentId the id of the student's department
      */
     public void addStudent(String fname, String lname, String departmentId) {
-        if (studentNum < MAX_STUDENTS_NUM) {
+        if (findDepartment(departmentId) != null && studentNum < MAX_STUDENTS_NUM) {
             students[studentNum] = new Student(lname, fname, findDepartment(departmentId));
             System.out.printf("%s added successfully.\n", students[studentNum++]);
+        }
+        else if (findDepartment(departmentId) == null) {
+            System.out.printf("Department with id %s not found, add student failed\n", departmentId);
         }
         else {
             System.out.println("Max student number reached, add a new student failed");

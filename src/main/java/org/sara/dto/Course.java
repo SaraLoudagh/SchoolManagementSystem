@@ -3,6 +3,10 @@ package org.sara.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Class to create courses
+ * @author Sara Loudagh
+ */
 @Getter
 @Setter
 public class Course {
@@ -40,7 +44,7 @@ public class Course {
             teacherName = teacher.getFname() + " " + teacher.getLname();
         }
         String strOut = String.format("Course{id='%s', courseName='%s', credit=%.1f, teacher=%s," +
-                " department='%s', students=", id, courseName, credit, teacherName,
+                        " department='%s', students=", id, courseName, credit, teacherName,
                 department.getDepartmentName());
         String studentList = "[";
         for (Student student : students) {

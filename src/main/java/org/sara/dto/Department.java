@@ -2,6 +2,10 @@ package org.sara.dto;
 
 import lombok.Getter;
 
+/**
+ * Class to create departments for the school
+ * @author Sara Loudagh
+ */
 @Getter
 public class Department {
     private String id;
