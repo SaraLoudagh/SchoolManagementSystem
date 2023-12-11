@@ -19,9 +19,12 @@ findDepartment(),
 `registerCourse(String courseId, String studentId)` is used to register a student to a course
 
 The Student class is used to create new students
+
 The Teacher class is used to create new classes
+
 The Course class is used to create new courses
+
 The Department class is used to create new departments
 
-Here is class diagram to explain the code:
+Here is the class diagram to explain the code:
 <img width="816" alt="image" src="https://github.com/SaraLoudagh/SchoolManagementSystem/assets/150824189/87687f03-58fe-465a-a2ca-905c24162886">
